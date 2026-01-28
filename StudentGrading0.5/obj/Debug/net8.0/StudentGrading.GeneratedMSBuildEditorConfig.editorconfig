@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/3.Godina_ALGEBRA/ProjektPRA/StudentGrading/StudentGrading0.5/Views/Exam/Preview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxQcmV2aWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/3.Godina_ALGEBRA/ProjektPRA/StudentGrading/StudentGrading0.5/Views/Exam/Take.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVxUYWtlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/3.Godina_ALGEBRA/ProjektPRA/StudentGrading/StudentGrading0.5/Views/Result/Statistics.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0XFN0YXRpc3RpY3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/3.Godina_ALGEBRA/ProjektPRA/StudentGrading/StudentGrading0.5/Views/Result/TeacherStatistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0XFRlYWNoZXJTdGF0aXN0aWNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/3.Godina_ALGEBRA/ProjektPRA/StudentGrading/StudentGrading0.5/Views/Shared/Error.cshtml]

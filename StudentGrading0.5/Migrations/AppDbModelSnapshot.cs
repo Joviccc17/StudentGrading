@@ -64,9 +64,14 @@ namespace StudentGrading0._5.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ExamId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ExamResults");
                 });
@@ -133,7 +138,15 @@ namespace StudentGrading0._5.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("StudentGrading.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Exam");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StudentGrading.Models.Question", b =>

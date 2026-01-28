@@ -1,0 +1,102 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using StudentGrading.Data;
+using StudentGrading.Models;
+using StudentGrading.Services;
+using System;
+
+namespace StudentGrading.Controllers
+{
+    public class ExamController : Controller
+    {
+        private readonly AppDb _context;
+        private readonly GradingService _gradingService;
+
+        public ExamController(AppDb context, GradingService gradingService)
+        {
+            _context = context;
+            _gradingService = gradingService;
+        }
+
+       
+        public IActionResult List()
+        {
+            var exams = _context.Exams.ToList();
+            return View(exams);
+        }
+
+     
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+    
+        [HttpPost]
+        public IActionResult Create(Exam exam)
+        {
+            if (!ModelState.IsValid)
+                return View(exam);
+
+            _context.Exams.Add(exam);
+            _context.SaveChanges();
+
+            return RedirectToAction("List");
+        }
+
+      
+      
+        public IActionResult Take(int id)
+        {
+            var userRole = HttpContext.Session.GetString("UserRole");
+            
+            // Redirect teachers to preview instead of taking the exam
+            if (userRole == "Teacher")
+                return RedirectToAction("Preview", new { id = id });
+
+            var exam = _context.Exams
+                .Include(e => e.Questions)
+                .FirstOrDefault(e => e.Id == id);
+
+            if (exam == null)
+                return NotFound();
+
+            return View(exam);
+        }
+
+
+        [HttpPost]
+        public IActionResult Submit(int examId, Dictionary<int, string> answers)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+                return RedirectToAction("Login", "Account");
+
+            var exam = _context.Exams
+                .Include(e => e.Questions)
+                .FirstOrDefault(e => e.Id == examId);
+
+            if (exam == null)
+                return NotFound();
+
+            int score = _gradingService.CalculateScore(exam.Questions, answers);
+            double percentage = (double)score / exam.MaxPoints * 100;
+            int grade = _gradingService.CalculateGrade(percentage);
+
+            var result = new ExamResult
+            {
+                ExamId = examId,
+                UserId = userId.Value,
+                Score = score,
+                Percentage = percentage,
+                Grade = grade
+            };
+
+            _context.ExamResults.Add(result);
+            _context.SaveChanges();
+
+            return RedirectToAction("Statistics", "Result");
+        }
+    }
+}
+
