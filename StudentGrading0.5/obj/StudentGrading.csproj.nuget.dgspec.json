@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading1.0\\StudentGrading0.5\\StudentGrading.csproj": {}
+    "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\StudentGrading.csproj": {}
   },
   "projects": {
-    "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading1.0\\StudentGrading0.5\\StudentGrading.csproj": {
+    "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\StudentGrading.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading1.0\\StudentGrading0.5\\StudentGrading.csproj",
+        "projectUniqueName": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\StudentGrading.csproj",
         "projectName": "StudentGrading",
-        "projectPath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading1.0\\StudentGrading0.5\\StudentGrading.csproj",
+        "projectPath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\StudentGrading.csproj",
         "packagesPath": "C:\\Users\\doria\\.nuget\\packages\\",
-        "outputPath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading1.0\\StudentGrading0.5\\obj\\",
+        "outputPath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

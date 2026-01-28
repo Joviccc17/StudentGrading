@@ -1,5 +1,149 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StudentGrading.Models.Exam
+
 @{
+    ViewData["Title"] = "Create Exam";
 }
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <h3 class="mb-0">
+                        <i class="fas fa-plus-circle me-2"></i>Create New Exam
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Exam" asp-action="Create" method="post" id="examForm">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <label asp-for="Title" class="form-label">
+                                    <i class="fas fa-heading me-1"></i>Exam Title
+                                </label>
+                                <input asp-for="Title" class="form-control form-control-lg" placeholder="e.g., Mathematics Final Exam" required>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label asp-for="DurationMinutes" class="form-label">
+                                    <i class="fas fa-clock me-1"></i>Duration (Minutes)
+                                </label>
+                                <input asp-for="DurationMinutes" type="number" class="form-control" min="1" placeholder="e.g., 60" required>
+                                <span asp-validation-for="DurationMinutes" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="MaxPoints" class="form-label">
+                                    <i class="fas fa-star me-1"></i>Maximum Points
+                                </label>
+                                <input asp-for="MaxPoints" type="number" class="form-control" min="1" placeholder="e.g., 100" required>
+                                <span asp-validation-for="MaxPoints" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4><i class="fas fa-question-circle me-2"></i>Questions</h4>
+                            <button type="button" class="btn btn-info" onclick="addQuestion()">
+                                <i class="fas fa-plus me-2"></i>Add Question
+                            </button>
+                        </div>
+
+                        <div id="questionsContainer">
+                            <!-- Questions will be added here dynamically -->
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-save me-2"></i>Create Exam
+                            </button>
+                            <a asp-controller="Exam" asp-action="List" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        let questionCount = 0;
+
+        function addQuestion() {
+            const container = document.getElementById('questionsContainer');
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'card question-card mb-3';
+            questionDiv.innerHTML = `
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5><span class="question-number">${questionCount + 1}</span>Question ${questionCount + 1}</h5>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="removeQuestion(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Question Text</label>
+                        <textarea name="Questions[${questionCount}].Text" class="form-control" rows="3"
+                                  placeholder="Enter the question..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Correct Answer</label>
+                        <input type="text" name="Questions[${questionCount}].CorrectAnswer"
+                               class="form-control" placeholder="Enter the correct answer..." required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Points</label>
+                        <input type="number" name="Questions[${questionCount}].Points"
+                               class="form-control" min="1" value="10" required>
+                    </div>
+                </div>
+            `;
+            container.appendChild(questionDiv);
+            questionCount++;
+
+            questionDiv.classList.add('fade-in');
+        }
+
+        function removeQuestion(button) {
+            const questionCard = button.closest('.question-card');
+            questionCard.style.animation = 'fadeOut 0.3s ease-out';
+            setTimeout(() => {
+                questionCard.remove();
+                updateQuestionNumbers();
+            }, 300);
+        }
+
+        function updateQuestionNumbers() {
+            const questions = document.querySelectorAll('.question-card');
+            questions.forEach((card, index) => {
+                const title = card.querySelector('h5');
+                const number = card.querySelector('.question-number');
+                number.textContent = index + 1;
+                title.innerHTML = `<span class="question-number">${index + 1}</span>Question ${index + 1}`;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            addQuestion();
+        });
+
+        document.getElementById('examForm').addEventListener('submit', function(e) {
+            if (questionCount === 0) {
+                e.preventDefault();
+                alert('Please add at least one question to the exam!');
+            }
+        });
+    </script>
+}
+

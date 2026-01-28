@@ -1,5 +1,92 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<StudentGrading.Models.Exam>
+
 @{
+    ViewData["Title"] = "Exams";
 }
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-clipboard-list me-2"></i>Available Exams</h2>
+        @if (Context.Session.GetString("UserRole") == "Teacher")
+        {
+            <a asp-controller="Exam" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus-circle me-2"></i>Create New Exam
+            </a>
+        }
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="card text-center py-5">
+            <div class="card-body">
+                <i class="fas fa-inbox fa-5x text-muted mb-3"></i>
+                <h4 class="text-muted">No Exams Available</h4>
+                <p class="text-muted">There are currently no exams in the system.</p>
+                @if (Context.Session.GetString("UserRole") == "Teacher")
+                {
+                    <a asp-controller="Exam" asp-action="Create" class="btn btn-primary mt-3">
+                        <i class="fas fa-plus-circle me-2"></i>Create Your First Exam
+                    </a>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var exam in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card exam-card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-file-alt me-2"></i>@exam.Title
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="exam-info mb-3">
+                                <div class="exam-info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>@exam.DurationMinutes mins</span>
+                                </div>
+                                <div class="exam-info-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>@exam.MaxPoints pts</span>
+                                </div>
+                            </div>
+
+                            <div class="exam-info mb-3">
+                                <div class="exam-info-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>@exam.Questions.Count Questions</span>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <a asp-controller="Exam" asp-action="Take" asp-route-id="@exam.Id"
+                                   class="btn btn-success">
+                                    <i class="fas fa-play me-2"></i>Take Exam
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Add staggered fade-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.exam-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, index * 100);
+            });
+        });
+    </script>
+}
+

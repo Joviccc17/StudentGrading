@@ -1,5 +1,194 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StudentGrading.Models.Exam
+
 @{
+    ViewData["Title"] = "Take Exam";
 }
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Exam Header -->
+            <div class="card shadow-lg mb-4">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">
+                            <i class="fas fa-file-alt me-2"></i>@Model.Title
+                        </h3>
+                        <div id="timer" class="badge bg-warning text-dark fs-5">
+                            <i class="fas fa-clock me-2"></i>
+                            <span id="timeRemaining">@Model.DurationMinutes:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="fas fa-question-circle fa-2x text-primary me-2"></i>
+                                <div>
+                                    <h4 class="mb-0">@Model.Questions.Count</h4>
+                                    <small class="text-muted">Questions</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="fas fa-clock fa-2x text-info me-2"></i>
+                                <div>
+                                    <h4 class="mb-0">@Model.DurationMinutes</h4>
+                                    <small class="text-muted">Minutes</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="fas fa-star fa-2x text-warning me-2"></i>
+                                <div>
+                                    <h4 class="mb-0">@Model.MaxPoints</h4>
+                                    <small class="text-muted">Total Points</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Questions Form -->
+            <form asp-controller="Exam" asp-action="Submit" method="post" id="examForm">
+                <input type="hidden" name="examId" value="@Model.Id" />
+
+                @for (int i = 0; i < Model.Questions.Count; i++)
+                {
+                    var question = Model.Questions[i];
+                    <div class="card question-card mb-4 fade-in" style="animation-delay: @(i * 0.1)s;">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="question-number">@(i + 1)</span>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-2">@question.Text</h5>
+                                    <span class="badge bg-info">@question.Points points</span>
+                                </div>
+                            </div>
+
+                            <div class="answer-section">
+                                <label class="form-label fw-bold">Your Answer:</label>
+                                <textarea name="answers[@question.Id]"
+                                      class="form-control"
+                                      rows="3"
+                                      placeholder="Type your answer here..."
+                                      required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="card shadow-lg">
+                    <div class="card-body text-center">
+                        <p class="mb-3 text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Make sure you've answered all questions before submitting!
+                        </p>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="submit" class="btn btn-success btn-lg me-md-2" id="submitBtn">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Exam
+                            </button>
+                            <a asp-controller="Exam" asp-action="List" class="btn btn-outline-secondary btn-lg">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Timer functionality
+        let totalSeconds = @Model.DurationMinutes * 60;
+        let timerInterval;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                totalSeconds--;
+
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+
+                const timeDisplay = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                document.getElementById('timeRemaining').textContent = timeDisplay;
+
+                // Change color based on time remaining
+                const timerBadge = document.getElementById('timer');
+                if (totalSeconds <= 60) {
+                    timerBadge.className = 'badge bg-danger text-white fs-5';
+                } else if (totalSeconds <= 300) {
+                    timerBadge.className = 'badge bg-warning text-dark fs-5';
+                }
+
+                // Auto-submit when time is up
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Time is up! Your exam will be submitted automatically.');
+                    document.getElementById('examForm').submit();
+                }
+            }, 1000);
+        }
+
+        // Confirm before leaving page
+        window.addEventListener('beforeunload', function (e) {
+            if (totalSeconds > 0) {
+                e.preventDefault();
+                e.returnValue = 'Are you sure you want to leave? Your progress will be lost.';
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('examForm').addEventListener('submit', function(e) {
+            const confirmation = confirm('Are you sure you want to submit your exam? You cannot change your answers after submission.');
+            if (!confirmation) {
+                e.preventDefault();
+            } else {
+                clearInterval(timerInterval);
+                // Disable submit button to prevent double submission
+                document.getElementById('submitBtn').disabled = true;
+                document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
+            }
+        });
+
+        // Auto-save answers to localStorage (optional feature)
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            // Load saved answer
+            const savedAnswer = localStorage.getItem(`exam_${@Model.Id}_${textarea.name}`);
+            if (savedAnswer) {
+                textarea.value = savedAnswer;
+            }
+
+            // Save on input
+            textarea.addEventListener('input', function() {
+                localStorage.setItem(`exam_${@Model.Id}_${textarea.name}`, this.value);
+            });
+        });
+
+        // Clear localStorage on submit
+        document.getElementById('examForm').addEventListener('submit', function() {
+            textareas.forEach(textarea => {
+                localStorage.removeItem(`exam_${@Model.Id}_${textarea.name}`);
+            });
+        });
+
+        // Start timer on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            startTimer();
+
+            // Scroll progress indicator
+            window.addEventListener('scroll', function() {
+                const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                // You can add a progress bar if needed
+            });
+        });
+    </script>
+}
+

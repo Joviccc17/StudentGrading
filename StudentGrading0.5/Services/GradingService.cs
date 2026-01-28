@@ -11,7 +11,7 @@ namespace StudentGrading.Services
             foreach (var q in questions)
             {
                 if (answers.TryGetValue(q.Id, out var givenAnswer))
-                {                    
+                {
                     if (string.Equals(givenAnswer?.Trim(), q.CorrectAnswer.Trim(), StringComparison.OrdinalIgnoreCase))
                     {
                         score += q.Points;
@@ -23,7 +23,7 @@ namespace StudentGrading.Services
         }
 
         public int CalculateGrade(double percentage)
-        {            
+        {
             if (percentage >= 90) return 5;
             if (percentage >= 75) return 4;
             if (percentage >= 60) return 3;

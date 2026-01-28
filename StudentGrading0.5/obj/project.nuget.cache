@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mdw52ybxlSg=",
+  "dgSpecHash": "LmhRivv1wsM=",
   "success": true,
-  "projectFilePath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading1.0\\StudentGrading0.5\\StudentGrading.csproj",
+  "projectFilePath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\StudentGrading.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\doria\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\doria\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

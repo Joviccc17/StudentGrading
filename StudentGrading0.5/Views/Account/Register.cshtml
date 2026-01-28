@@ -1,0 +1,70 @@
+﻿@model StudentGrading.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="auth-container">
+    <div class="card auth-card shadow-lg">
+        <div class="card-header">
+            <i class="fas fa-user-plus me-2"></i>Create New Account
+        </div>
+        <div class="card-body">
+            <form asp-controller="Account" asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">
+                        <i class="fas fa-envelope me-1"></i>Email Address
+                    </label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" required>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">
+                        <i class="fas fa-lock me-1"></i>Password
+                    </label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" required>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <small class="form-text text-muted">Password must be at least 6 characters long</small>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Role" class="form-label">
+                        <i class="fas fa-user-tag me-1"></i>Role
+                    </label>
+                    <select asp-for="Role" class="form-select" required>
+                        <option value="">-- Select Role --</option>
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid gap-2 mb-3">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Register
+                    </button>
+                </div>
+
+                <div class="text-center">
+                    <p class="mb-0">
+                        Already have an account?
+                        <a asp-controller="Account" asp-action="Login" class="text-decoration-none fw-bold">Login here</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Add animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.auth-card').classList.add('fade-in');
+        });
+    </script>
+}
