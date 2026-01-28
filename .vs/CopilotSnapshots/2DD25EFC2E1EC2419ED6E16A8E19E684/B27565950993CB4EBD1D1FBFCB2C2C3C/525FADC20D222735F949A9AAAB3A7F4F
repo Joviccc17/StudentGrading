@@ -1,0 +1,244 @@
+﻿@model List<StudentGrading.Models.ExamResult>
+
+@{
+    ViewData["Title"] = "Results & Statistics";
+}
+
+<div class="container">
+    <div class="mb-4">
+        <h2><i class="fas fa-chart-bar me-2"></i>Exam Results & Statistics</h2>
+        <p class="text-muted">View all exam results and performance statistics</p>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="card text-center py-5">
+            <div class="card-body">
+                <i class="fas fa-chart-line fa-5x text-muted mb-3"></i>
+                <h4 class="text-muted">No Results Available</h4>
+                <p class="text-muted">There are no exam results to display yet.</p>
+                <a asp-controller="Exam" asp-action="List" class="btn btn-primary mt-3">
+                    <i class="fas fa-clipboard-list me-2"></i>Take an Exam
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <i class="fas fa-list-ol fa-3x mb-3" style="color: #667eea;"></i>
+                        <div class="stat-number">@Model.Count</div>
+                        <div class="stat-label">Total Results</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <i class="fas fa-star fa-3x mb-3" style="color: #f2994a;"></i>
+                        <div class="stat-number">@Model.Average(r => r.Grade).ToString("F1")</div>
+                        <div class="stat-label">Average Grade</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <i class="fas fa-trophy fa-3x mb-3" style="color: #11998e;"></i>
+                        <div class="stat-number">@Model.Max(r => r.Score)</div>
+                        <div class="stat-label">Highest Score</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <i class="fas fa-percent fa-3x mb-3" style="color: #eb3349;"></i>
+                        <div class="stat-number">@Model.Average(r => r.Percentage).ToString("F1")%</div>
+                        <div class="stat-label">Average %</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade Distribution Chart -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Grade Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="gradeChart" height="80"></canvas>
+            </div>
+        </div>
+
+        <!-- Results Table -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-table me-2"></i>All Results</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-hashtag me-1"></i>#</th>
+                                <th><i class="fas fa-file-alt me-1"></i>Exam</th>
+                                <th><i class="fas fa-star me-1"></i>Score</th>
+                                <th><i class="fas fa-percent me-1"></i>Percentage</th>
+                                <th><i class="fas fa-award me-1"></i>Grade</th>
+                                <th><i class="fas fa-flag me-1"></i>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                var result = Model[i];
+                                var statusClass = result.Grade >= 2 ? "success" : "danger";
+                                var statusText = result.Grade >= 2 ? "Passed" : "Failed";
+                                var statusIcon = result.Grade >= 2 ? "check-circle" : "times-circle";
+                                
+                                <tr>
+                                    <td class="fw-bold">@(i + 1)</td>
+                                    <td>
+                                        @if (result.Exam != null)
+                                        {
+                                            @result.Exam.Title
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">Exam #@result.ExamId</span>
+                                        }
+                                    </td>
+                                    <td><span class="badge bg-info">@result.Score pts</span></td>
+                                    <td>
+                                        <div class="progress" style="height: 25px;">
+                                            <div class="progress-bar bg-gradient @(result.Percentage >= 50 ? "bg-success" : "bg-danger")" 
+                                                 role="progressbar" 
+                                                 style="width: @result.Percentage%"
+                                                 aria-valuenow="@result.Percentage" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100">
+                                                @result.Percentage.ToString("F1")%
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-warning text-dark fs-6">@result.Grade</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-@statusClass">
+                                            <i class="fas fa-@statusIcon me-1"></i>@statusText
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (Model != null && Model.Any())
+            {
+                <text>
+                var gradeDistribution = {
+                    '5': @Model.Count(r => r.Grade == 5),
+                    '4': @Model.Count(r => r.Grade == 4),
+                    '3': @Model.Count(r => r.Grade == 3),
+                    '2': @Model.Count(r => r.Grade == 2),
+                    '1': @Model.Count(r => r.Grade == 1)
+                };
+
+                const ctx = document.getElementById('gradeChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Grade 5 (Excellent)', 'Grade 4 (Very Good)', 'Grade 3 (Good)', 'Grade 2 (Satisfactory)', 'Grade 1 (Fail)'],
+                        datasets: [{
+                            label: 'Number of Students',
+                            data: [
+                                gradeDistribution['5'],
+                                gradeDistribution['4'],
+                                gradeDistribution['3'],
+                                gradeDistribution['2'],
+                                gradeDistribution['1']
+                            ],
+                            backgroundColor: [
+                                'rgba(17, 153, 142, 0.8)',
+                                'rgba(102, 126, 234, 0.8)',
+                                'rgba(242, 153, 74, 0.8)',
+                                'rgba(235, 51, 73, 0.8)',
+                                'rgba(150, 150, 150, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgba(17, 153, 142, 1)',
+                                'rgba(102, 126, 234, 1)',
+                                'rgba(242, 153, 74, 1)',
+                                'rgba(235, 51, 73, 1)',
+                                'rgba(150, 150, 150, 1)'
+                            ],
+                            borderWidth: 2,
+                            borderRadius: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                padding: 12,
+                                titleFont: {
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    size: 13
+                                },
+                                borderColor: 'rgba(255, 255, 255, 0.2)',
+                                borderWidth: 1
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1,
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+                </text>
+            }
+        });
+    </script>
+}

@@ -1,13 +1,13 @@
 @model List<StudentGrading.Models.ExamResult>
 
 @{
-    ViewData["Title"] = "Results & Statistics";
+    ViewData["Title"] = "My Results";
 }
 
 <div class="container">
     <div class="mb-4">
-        <h2><i class="fas fa-chart-bar me-2"></i>Exam Results & Statistics</h2>
-        <p class="text-muted">View all exam results and performance statistics</p>
+        <h2><i class="fas fa-chart-bar me-2"></i>My Exam Results</h2>
+        <p class="text-muted">View your exam results and performance statistics</p>
     </div>
 
     @if (Model == null || !Model.Any())
@@ -15,8 +15,8 @@
         <div class="card text-center py-5">
             <div class="card-body">
                 <i class="fas fa-chart-line fa-5x text-muted mb-3"></i>
-                <h4 class="text-muted">No Results Available</h4>
-                <p class="text-muted">There are no exam results to display yet.</p>
+                <h4 class="text-muted">No Results Yet</h4>
+                <p class="text-muted">You haven't taken any exams yet.</p>
                 <a asp-controller="Exam" asp-action="List" class="btn btn-primary mt-3">
                     <i class="fas fa-clipboard-list me-2"></i>Take an Exam
                 </a>
@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <i class="fas fa-list-ol fa-3x mb-3" style="color: #667eea;"></i>
                         <div class="stat-number">@Model.Count</div>
-                        <div class="stat-label">Total Results</div>
+                        <div class="stat-label">Exams Taken</div>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <i class="fas fa-star fa-3x mb-3" style="color: #f2994a;"></i>
                         <div class="stat-number">@Model.Average(r => r.Grade).ToString("F1")</div>
-                        <div class="stat-label">Average Grade</div>
+                        <div class="stat-label">Your Average Grade</div>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <div class="card-body">
                         <i class="fas fa-trophy fa-3x mb-3" style="color: #11998e;"></i>
                         <div class="stat-number">@Model.Max(r => r.Score)</div>
-                        <div class="stat-label">Highest Score</div>
+                        <div class="stat-label">Your Best Score</div>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
         <!-- Grade Distribution Chart -->
         <div class="card mb-4">
             <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Grade Distribution</h5>
+                <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Your Grade Distribution</h5>
             </div>
             <div class="card-body">
                 <canvas id="gradeChart" height="80"></canvas>
@@ -78,7 +78,7 @@
         <!-- Results Table -->
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-table me-2"></i>All Results</h5>
+                <h5 class="mb-0"><i class="fas fa-table me-2"></i>Your Exam Results</h5>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

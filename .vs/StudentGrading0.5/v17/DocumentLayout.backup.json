@@ -1,12 +1,173 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\controllers\\resultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\controllers\\resultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\models\\examresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\models\\examresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\controllers\\examcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\controllers\\examcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\views\\exam\\preview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\views\\exam\\preview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\views\\result\\teacherstatistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\views\\result\\teacherstatistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\views\\result\\statistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\views\\result\\statistics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|c:\\3.godina_algebra\\projektpra\\studentgrading\\studentgrading0.5\\migrations\\20260128154800_adduseridtoexamresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10122262-80D5-4692-805F-04FF8F4E9C5C}|StudentGrading0.5\\StudentGrading.csproj|solutionrelative:studentgrading0.5\\migrations\\20260128154800_adduseridtoexamresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20260128154800_AddUserIdToExamResult.cs",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Migrations\\20260128154800_AddUserIdToExamResult.cs",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Migrations\\20260128154800_AddUserIdToExamResult.cs",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Migrations\\20260128154800_AddUserIdToExamResult.cs",
+              "RelativeToolTip": "StudentGrading0.5\\Migrations\\20260128154800_AddUserIdToExamResult.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:56:04.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "StudentGrading0.5\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-28T15:47:09.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ResultController.cs",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Controllers\\ResultController.cs",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Controllers\\ResultController.cs",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Controllers\\ResultController.cs",
+              "RelativeToolTip": "StudentGrading0.5\\Controllers\\ResultController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAMwCIAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:49:20.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Statistics.cshtml",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Result\\Statistics.cshtml",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Views\\Result\\Statistics.cshtml",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Result\\Statistics.cshtml",
+              "RelativeToolTip": "StudentGrading0.5\\Views\\Result\\Statistics.cshtml",
+              "ViewState": "AgIAAE8AAAAAAAAAAIBJwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-28T15:50:06.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TeacherStatistics.cshtml",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Result\\TeacherStatistics.cshtml",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Views\\Result\\TeacherStatistics.cshtml",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Result\\TeacherStatistics.cshtml",
+              "RelativeToolTip": "StudentGrading0.5\\Views\\Result\\TeacherStatistics.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-28T15:49:56.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Preview.cshtml",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Exam\\Preview.cshtml",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Views\\Exam\\Preview.cshtml",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Exam\\Preview.cshtml",
+              "RelativeToolTip": "StudentGrading0.5\\Views\\Exam\\Preview.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-28T15:49:08.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExamController.cs",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Controllers\\ExamController.cs",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Controllers\\ExamController.cs",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Controllers\\ExamController.cs",
+              "RelativeToolTip": "StudentGrading0.5\\Controllers\\ExamController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAIBQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:48:24.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExamResult.cs",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Models\\ExamResult.cs",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Models\\ExamResult.cs",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Models\\ExamResult.cs",
+              "RelativeToolTip": "StudentGrading0.5\\Models\\ExamResult.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAIBQwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:47:38.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "StudentGrading0.5\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\3.Godina_ALGEBRA\\ProjektPRA\\StudentGrading\\StudentGrading0.5\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "StudentGrading0.5\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-28T15:47:29.289Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
