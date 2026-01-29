@@ -1,8 +1,0 @@
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\rpswa.dswa.cache.json
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.AssemblyInfoInputs.cache
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.AssemblyInfo.cs
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.csproj.CoreCompileInputs.cache
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.RazorAssemblyInfo.cache
-C:\Users\Matej Karafin\source\repos\StudentGrading0.5\StudentGrading0.5\obj\Debug\net7.0\StudentGrading.RazorAssemblyInfo.cs
