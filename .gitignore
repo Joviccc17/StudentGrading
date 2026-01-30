@@ -18,6 +18,8 @@ x86/
 [Oo]bj/
 
 # Visual Studio cache/options
+bin/
+obj/
 .vs/
 
 # NuGet Packages
