@@ -12,6 +12,9 @@ namespace StudentGrading.Models
         public int DurationMinutes { get; set; }
         public int MaxPoints { get; set; }
 
+
+        public string? Description { get; set; }    //za conflict
+
         public List<Question> Questions { get; set; } = new();
     }
 }
